@@ -6,7 +6,7 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.zulu17
-    pkgs.maven
+    pkgs.gradle
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -19,11 +19,11 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        install = "mvn clean install";
+        build = "gradle build";
       };
       # Runs when a workspace is (re)started
       onStart = {
-        run-server = "PORT=3000 mvn spring-boot:run";
+        run-server = "PORT=3000 gradle bootRun";
       };
     };
   };
